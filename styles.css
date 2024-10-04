@@ -1,23 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-main {
-  width: 80%;
-  margin: auto;
-}
-@media screen and (max-width: 768px) {
-  /* #clock, h1 {
-    font-size: 2.5em;
-  } */
-  main {
-    width: 100%;
-  }
-}
 @media screen and (min-width: 768px) {
   table {
     font-size: 1.5em;
     display: table;
   }
+}
+.info td {
+  background-color: #ddd;
 }
 .dropbtn {
   border: none;
@@ -36,7 +27,9 @@ main {
   text-decoration: none;
   display: block;
 }
-.dropdown-content a:hover {background-color: #dddddd;}
+.dropdown-content a:hover {
+  background-color: #dddddd;
+}
 .show {
-display:block;
+  display:block;
 } 

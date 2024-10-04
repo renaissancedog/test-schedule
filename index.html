@@ -8,13 +8,13 @@
   <link href='https://cdn.jsdelivr.net/npm/bootstrap@5/dist/css/bootstrap.min.css' rel='stylesheet'>
   <link href='output.css' rel='stylesheet'>
 </head>
-<body class="pr-6 pl-6 bg-sky-100 min-w-80 font-serif">
-  <main>
-    <div class="text-6xl space-y-5 text-sky-500 font-sans text-center">
+<body class="bg-sky-100 min-w-80 font-serif pl-1 pr-1">
+  <main class="w-full md:w-4/5 mx-auto">
+    <div class="text-5xl space-y-4 text-dark1 font-sans text-center">
       <h1>Reagan Bell Schedule</h1>
       <div id='clock'></div>
     </div>
-    <div class="space-y-5 font-sans text-4xl text-center mb-5 text-sky-500">
+    <div class="space-y-4 font-sans text-3xl text-center mt-3 mb-2 text-dark1">
       <div id='per'></div>
       <div id='min-left'></div>
       <div id='until-school'></div>
@@ -22,7 +22,7 @@
     <div class='container-fluid'>
       <ul class="nav nav-tabs" id="schedule">
         <div class="dropdown font-sans">
-          <button onclick="dropdown()" id="dropdown" class="bg-sky-500 text-white p-3 text-lg dropbtn">Dropdown</button>
+          <button onclick="dropdown()" id="dropdown" class="bg-dark1 text-white p-3 text-lg dropbtn">Dropdown</button>
           <div id="myDropdown" class="bg-gray-100 text-black min-w-40 dropdown-content">
             <a href="#Regular">Regular Schedule</a>
             <a href="#STRIKE">STRIKE Schedule</a>
@@ -70,7 +70,7 @@
       </table>
     </div>
     <footer class="font-sans">
-      <p><a class="underline text-sky-500" href="https://github.com/renaissancedog/reagan-schedule--copy-" target="_blank">Star or fork</a> this repo.</p>
+      <p><a class="underline text-dark1" href="https://github.com/renaissancedog/reagan-schedule--copy-" target="_blank">Star or fork</a> this repo.</p>
       <p class="mt-2">Made with ❤️ by William, 2024</p>
     </footer>
   </main>

@@ -82,7 +82,7 @@ function updatePeriod(schedule) {
 	let today = new Date();
 	let dow = today.getDay(); // day of week
 	let currTime = new Time(today.getHours(), today.getMinutes());
-	
+		
 	if (!currTime.isIn(schedule[0].start, schedule[schedule.length - 1].end) || dow === 6 || dow === 0) {
 		// If not during school
 		for (let item of schedule) {
