@@ -6,9 +6,9 @@ main {
   margin: auto;
 }
 @media screen and (max-width: 768px) {
-  #clock, h1 {
+  /* #clock, h1 {
     font-size: 2.5em;
-  }
+  } */
   main {
     width: 100%;
   }
