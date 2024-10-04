@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <title>Reagan HS Schedule</title>
+  <link rel="shortcut icon" type="shortcut icon" href="favicon.ico">
+  <link href='https://cdn.jsdelivr.net/npm/bootstrap@5/dist/css/bootstrap.min.css' rel='stylesheet'>
+  <link href='output.css' rel='stylesheet'>
+</head>
+<body class="pr-6 pl-6 bg-blue-200 min-w-80 font-serif">
+  <main>
+    <h1 class="text-6xl mb-5 text-blue-400 font-sans text-center">Reagan Bell Schedule</h1>
+    <div id='clock' class="text-6xl mb-5 text-blue-400 font-sans text-center"></div>
+    <div id='per' class="font-sans text-4xl text-center mb-5 text-blue-400"></div>
+    <div id='min-left' class="text-4xl text-center mb-5 text-blue-400 font-sans"></div>
+    <div id='until-school' class="text-4xl text-center mb-5 text-blue-400 font-sans"></div>
+    <div class='container-fluid'>
+      <ul class="nav nav-tabs" id="schedule">
+        <div class="dropdown font-sans">
+          <button onclick="dropdown()" id="dropdown" class="bg-blue-400 dropbtn">Dropdown</button>
+          <div id="myDropdown" class="dropdown-content">
+            <a href="#Regular">Regular Schedule</a>
+            <a href="#STRIKE">STRIKE Schedule</a>
+            <a href="#erSchedule">Early Release Schedule</a>
+          </div>
+        </div> 
+      </ul> 
+      <table id="table" class='font-sans table text-center'>
+        <tr id='p1'>
+          <td>Period 1</td>
+          <td class='time'></td>
+        </tr>
+        <tr id='p2'>
+          <td>Period 2</td>
+          <td class='time'></td>
+        </tr>
+        <tr id='strike'>
+          <td>STRIKE Time</td>
+          <td class='time'></td>
+        </tr>
+        <tr id='p3'>
+          <td>Period 3</td>
+          <td class='time'></td>
+        </tr>
+        <tr id='p4'>
+          <td>Period 4</td>
+          <td class='time'></td>
+        </tr>
+        <tr id='p5'>
+          <td>Period 5</td>
+          <td class='time'></td>
+        </tr>
+        <tr id='p6'>
+          <td>Period 6</td>
+          <td class='time'></td>
+        </tr>
+        <tr id='p7'>
+          <td>Period 7</td>
+          <td class='time'></td>
+        </tr>
+        <tr id='p8'>
+          <td>Period 8</td>
+          <td class='time'></td>
+        </tr>
+      </table>
+    </div>
+    <footer class="font-sans">
+      <p><a class="underline text-blue-400" href="https://github.com/renaissancedog/reagan-schedule" target="_blank">Star or fork</a> this repo.</p>
+      <p class="mt-2">Made with ❤️ by William, 2024</p>
+    </footer>
+  </main>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/js/bootstrap.min.js"></script> 
+<script src='scripts.js'></script>
+</html>
