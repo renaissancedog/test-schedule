@@ -554,6 +554,10 @@ video {
   display: none;
 }
 
+.absolute {
+  position: absolute;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -573,6 +577,10 @@ video {
 
 .table {
   display: table;
+}
+
+.hidden {
+  display: none;
 }
 
 .w-full {
@@ -666,30 +674,8 @@ video {
   text-decoration-line: underline;
 }
 
-@media screen and (min-width: 768px) {
-  table {
-    font-size: 1.5em;
-    display: table;
-  }
-}
-
 .info td {
   background-color: #ddd;
-}
-
-.dropbtn {
-  border: none;
-  cursor: pointer;
-}
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
 }
 
 .dropdown-content a {
@@ -703,11 +689,16 @@ video {
 }
 
 .show {
-  display:block;
+  display: block;
 }
 
 @media (min-width: 768px) {
   .md\:w-4\/5 {
     width: 80%;
+  }
+
+  .md\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 } 
