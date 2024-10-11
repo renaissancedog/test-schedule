@@ -1,3 +1,4 @@
+const erDates=[[9, 11],[10, 4],[2, 7]]//24-25 school year, not including end of semester (they end at 1:20)
 function Time(h, m) {
 	this.hours = (typeof h === 'number' && h >= 0 && h <= 23) ? h : 0;
 	this.minutes = (typeof m === 'number' && m >= 0 && m <= 59) ? m : 0;
@@ -82,7 +83,7 @@ function updatePeriod(schedule) {
 	let today = new Date();
 	let dow = today.getDay(); // day of week
 	let currTime = new Time(today.getHours(), today.getMinutes());
-		
+	
 	if (!currTime.isIn(schedule[0].start, schedule[schedule.length - 1].end) || dow === 6 || dow === 0) {
 		// If not during school
 		for (let item of schedule) {
@@ -118,7 +119,11 @@ function updatePeriod(schedule) {
 				if ( ! $("#" + curr.id).hasClass("info") )
 					$("#" + curr.id).addClass("info");
 				min = curr.end - currTime;
-				$("#min-left").html( min + " minutes left");
+				if (min==1) {
+					$("#min-left").html( min + " minute left");
+				} else {
+					$("#min-left").html( min + " minutes left");
+				}
 			} else {
 				if ( $("#" + curr.id).hasClass("info") )
 					$("#" + curr.id).removeClass("info");
@@ -126,7 +131,11 @@ function updatePeriod(schedule) {
 					if ( currTime.isIn(schedule[i-1].end,curr.start) ) {
 						$("#per").html("Before " + curr.name);
 						min = curr.start - currTime;
-						$("#min-left").html( min + " minutes left");
+						if (min==1) {
+							$("#min-left").html( min + " minute left");
+						} else {
+							$("#min-left").html( min + " minutes left");
+						}
 					} 
 				}
 			}
@@ -170,7 +179,17 @@ $('#schedule a[href="#erSchedule"]').click(function (e) {
 $(function() {
 	let today = new Date();
 	let dow = today.getDay(); // day of week
-	if (dow==4) {
+	let month = today.getMonth()
+	let date = today.getDate()
+	let earlyR=false;
+	for (let i=0; i<erDates.length; i++) {
+		if (erDates[i][0]==month&&erDates[i][1]==date){
+			earlyR=true
+		}
+	} 
+	if (earlyR) {
+		$('#schedule a[href="#erSchedule"]').click();
+	} else if (dow==4) {
 		$('#schedule a[href="#STRIKE"]').click();
 	} else {
 		$('#schedule a[href="#Regular"]').click();
@@ -184,18 +203,17 @@ $(function() {
 });
 /* DROPDOWN STUFF */
 function dropdown() {
-  document.getElementById("myDropdown").classList.toggle("show");
+	document.getElementById("myDropdown").classList.toggle("show");
 }
 
 window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-    let dropdowns = document.getElementsByClassName("dropdown-content");
-    let i;
-    for (i = 0; i < dropdowns.length; i++) {
-      let openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
+	if (!event.target.matches('.dropbtn')) {
+		let dropdowns = document.getElementsByClassName("dropdown-content");
+		for (let i = 0; i < dropdowns.length; i++) {
+			let openDropdown = dropdowns[i];
+			if (openDropdown.classList.contains('show')) {
+				openDropdown.classList.remove('show');
+			}
+		}
+	}
 } 
