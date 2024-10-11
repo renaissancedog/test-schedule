@@ -105,8 +105,11 @@ function updatePeriod(schedule) {
 		(dow === 6 && currTime.valueOf() > schedule[0].start.valueOf()) ||
 		(dow === 0 && currTime.valueOf() < schedule[0].start.valueOf()) ?
 		24 : 0;
-		
-		$("#until-school").html(`${hours} hours and ${minutes} minutes until school`);
+		if (minutes==1) {
+			$("#until-school").html(`${hours} hours and ${minutes} minute until school`);
+		}	else {
+			$("#until-school").html(`${hours} hours and ${minutes} minutes until school`);
+		}
 	} else {
 		// Updates current period if during school
 		if ( $("#until-school").html() != "" )
