@@ -1,3 +1,3 @@
 module.exports = {
-  content: ["*.html"],
-}
+  content: ['*.html'],
+};
