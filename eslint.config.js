@@ -2,7 +2,6 @@ import prettier from 'eslint-config-prettier';
 import js from '@eslint/js';
 import globals from 'globals';
 
-/** @type {import('eslint').Linter.Config[]} */
 export default [
   js.configs.recommended,
   prettier,
@@ -11,7 +10,11 @@ export default [
       globals: {
         ...globals.browser,
         ...globals.node,
+        $: 'readonly',
       },
+    },
+    rules: {
+      'no-unused-vars': 'warn',
     },
   },
 ];
