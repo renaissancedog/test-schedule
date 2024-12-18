@@ -193,27 +193,21 @@ const sem2Schedule = [
   { name: 'Period 1', id: 'p1', start: new Time(8, 50), end: new Time(9, 35) },
   { name: 'Period 2', id: 'p2', start: new Time(9, 40), end: new Time(10, 50) },
   {
-    name: 'Period 3',
-    id: 'p3',
-    start: new Time(10, 55),
-    end: new Time(11, 40),
-  },
-  {
     name: 'Period 4',
     id: 'p4',
-    start: new Time(11, 45),
-    end: new Time(12, 30),
+    start: new Time(10, 55),
+    end: new Time(12, 5),
   },
   {
     name: 'Period 5',
     id: 'p5',
-    start: new Time(12, 35),
-    end: new Time(13, 45),
+    start: new Time(12, 10),
+    end: new Time(13, 20),
   },
   {
     name: 'Period 6',
     id: 'p6',
-    start: new Time(13, 50),
+    start: new Time(13, 25),
     end: new Time(14, 35),
   },
   {
@@ -229,6 +223,46 @@ const sem2Schedule = [
     end: new Time(16, 15),
   },
 ];
+// const sem2Schedule = [
+//   { name: 'Period 1', id: 'p1', start: new Time(8, 50), end: new Time(9, 35) },
+//   { name: 'Period 2', id: 'p2', start: new Time(9, 40), end: new Time(10, 50) },
+//   {
+//     name: 'Period 3',
+//     id: 'p3',
+//     start: new Time(10, 55),
+//     end: new Time(11, 40),
+//   },
+//   {
+//     name: 'Period 4',
+//     id: 'p4',
+//     start: new Time(11, 45),
+//     end: new Time(12, 30),
+//   },
+//   {
+//     name: 'Period 5',
+//     id: 'p5',
+//     start: new Time(12, 35),
+//     end: new Time(13, 45),
+//   },
+//   {
+//     name: 'Period 6',
+//     id: 'p6',
+//     start: new Time(13, 50),
+//     end: new Time(14, 35),
+//   },
+//   {
+//     name: 'Period 7',
+//     id: 'p7',
+//     start: new Time(14, 40),
+//     end: new Time(15, 25),
+//   },
+//   {
+//     name: 'Period 8',
+//     id: 'p8',
+//     start: new Time(15, 30),
+//     end: new Time(16, 15),
+//   },
+// ];
 const sem3Schedule = [
   { name: 'Period 1', id: 'p1', start: new Time(8, 50), end: new Time(10, 5) },
   {
