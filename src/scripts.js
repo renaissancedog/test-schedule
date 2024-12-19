@@ -39,7 +39,20 @@ Date.prototype.toString = function () {
   return `${hours}:${minutes}:${seconds} ${ampm}`;
 };
 
-import { sem1Dates, sem1Schedule, sem2Dates, sem2Schedule, sem3Dates, sem3Schedule, sem4Dates, sem4Schedule, erDates, erSchedule, strikeSchedule, regSchedule } from "./schedules.js";
+import {
+  sem1Dates,
+  sem1Schedule,
+  sem2Dates,
+  sem2Schedule,
+  sem3Dates,
+  sem3Schedule,
+  sem4Dates,
+  sem4Schedule,
+  erDates,
+  erSchedule,
+  strikeSchedule,
+  regSchedule,
+} from './schedules.js';
 
 function updateSchedule(schedule) {
   for (let item of schedule) {
@@ -142,6 +155,16 @@ function showAllRows() {
   $('#p6').show();
   $('#p7').show();
   $('#p8').show();
+  $('.table').show();
+}
+function semesterExamHelper() {
+  showAllRows();
+  $('#strike').hide();
+  $('#sem1').hide();
+  $('#sem2').hide();
+  $('#sem3').hide();
+  $('#sem4').hide();
+  document.getElementById('dropdown').innerText = 'Semester Exam Schedule';
 }
 $('#schedule a[href="#Regular"]').click(function (e) {
   e.preventDefault();
@@ -152,7 +175,6 @@ $('#schedule a[href="#Regular"]').click(function (e) {
   updatePeriod(regSchedule);
   schedule = regSchedule;
   document.getElementById('dropdown').innerText = 'Regular Schedule';
-  $('.table').show();
 });
 
 $('#schedule a[href="#STRIKE"]').click(function (e) {
@@ -163,7 +185,6 @@ $('#schedule a[href="#STRIKE"]').click(function (e) {
   updatePeriod(strikeSchedule);
   schedule = strikeSchedule;
   document.getElementById('dropdown').innerText = 'STRIKE Schedule';
-  $('.table').show();
 });
 
 $('#schedule a[href="#erSchedule"]').click(function (e) {
@@ -175,59 +196,48 @@ $('#schedule a[href="#erSchedule"]').click(function (e) {
   updatePeriod(erSchedule);
   schedule = erSchedule;
   document.getElementById('dropdown').innerText = 'Early Release Schedule';
-  $('.table').show();
 });
 $('#schedule a[href="#sem1Schedule"]').click(function (e) {
   e.preventDefault();
+  semesterExamHelper();
+  $('#sem1').show();
   $(this).tab('show');
-  showAllRows();
-  $('#strike').hide();
   updateSchedule(sem1Schedule);
   updatePeriod(sem1Schedule);
   schedule = sem1Schedule;
-  document.getElementById('dropdown').innerText = 'Semester Exam Schedule';
-  $('.table').show();
 });
 $('#schedule a[href="#sem2Schedule"]').click(function (e) {
   e.preventDefault();
+  semesterExamHelper();
+  $('#sem2').show();
   $(this).tab('show');
-  showAllRows();
-  $('#strike').hide();
   updateSchedule(sem2Schedule);
   updatePeriod(sem2Schedule);
   schedule = sem2Schedule;
-  document.getElementById('dropdown').innerText = 'Semester Exam Schedule';
-  $('.table').show();
 });
 $('#schedule a[href="#sem3Schedule"]').click(function (e) {
   e.preventDefault();
   $(this).tab('show');
-  showAllRows();
-  $('#strike').hide();
+  semesterExamHelper();
+  $('#sem3').show();
   $('#p2').hide();
   $('#p3').hide();
   $('#p8').hide();
   updateSchedule(sem3Schedule);
   updatePeriod(sem3Schedule);
   schedule = sem3Schedule;
-  document.getElementById('dropdown').innerText =
-    'Semester Early Release Schedule';
-  $('.table').show();
 });
 $('#schedule a[href="#sem4Schedule"]').click(function (e) {
   e.preventDefault();
   $(this).tab('show');
-  showAllRows();
-  $('#strike').hide();
+  semesterExamHelper();
+  $('#sem4').show();
   $('#p1').hide();
   $('#p2').hide();
   $('#p7').hide();
   updateSchedule(sem4Schedule);
   updatePeriod(sem4Schedule);
   schedule = sem4Schedule;
-  document.getElementById('dropdown').innerText =
-    'Semester Early Release Schedule';
-  $('.table').show();
 });
 
 $(function () {
