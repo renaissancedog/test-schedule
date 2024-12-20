@@ -63,9 +63,15 @@ function updateSchedule(schedule) {
   }
 }
 
-function updateTime() {
+function updateTime(schedule) {
   let today = new Date();
   $('#clock').html(today.toString());
+  if (today.getSeconds() == 0) {
+    updatePeriod(schedule);
+  }
+  if (today.getMinutes() == 0) {
+    vacation();
+  }
 }
 
 function updatePeriod(schedule) {
@@ -338,9 +344,7 @@ $(function () {
   }
   updateTime();
   setInterval(function () {
-    updateTime();
-    updatePeriod(schedule);
-    vacation();
+    updateTime(schedule);
   }, 1000);
 });
 /* DROPDOWN STUFF */
