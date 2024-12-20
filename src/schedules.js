@@ -22,7 +22,23 @@ Time.prototype = {
     return x - y + (x > y ? 0 : 24 * 60);
   },
 };
-
+export const holidayDates = [
+  //spring break, summer break, fall break, winter break
+  //format: 1st day of holiday, last day of holiday
+  //note that no schooldays are included in the range
+  [
+    [11, 21],
+    [0, 5],
+  ],
+  [
+    [2, 8],
+    [2, 16],
+  ],
+  [
+    [4, 23],
+    [7, 10],
+  ],
+];
 export const erDates = [
   [9, 11],
   [10, 4],
@@ -255,5 +271,51 @@ export const sem4Schedule = [
     id: 'p8',
     start: new Time(12, 10),
     end: new Time(13, 20),
+  },
+];
+export const lopezSchedule = [
+  { name: 'Period 1', id: 'p1', start: new Time(8, 25), end: new Time(9, 12) },
+  { name: 'Period 2', id: 'p2', start: new Time(9, 16), end: new Time(10, 3) },
+  {
+    name: 'Period 3',
+    id: 'p3',
+    start: new Time(10, 7),
+    end: new Time(10, 55),
+  },
+  {
+    name: 'Period 4',
+    id: 'p4',
+    start: new Time(10, 59),
+    end: new Time(11, 45),
+  },
+  {
+    name: 'Period 5',
+    id: 'p5',
+    start: new Time(11, 49),
+    end: new Time(12, 35),
+  },
+  {
+    name: '8th Grade Lunch',
+    id: 'lunch',
+    start: new Time(12, 39),
+    end: new Time(13, 9),
+  },
+  {
+    name: 'Period 6',
+    id: 'p6',
+    start: new Time(13, 13),
+    end: new Time(14, 0),
+  },
+  {
+    name: 'Period 7',
+    id: 'p7',
+    start: new Time(14, 4),
+    end: new Time(14, 50),
+  },
+  {
+    name: 'Period 8',
+    id: 'p8',
+    start: new Time(14, 54),
+    end: new Time(15, 40),
   },
 ];

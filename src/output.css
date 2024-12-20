@@ -558,6 +558,10 @@ video {
   position: absolute;
 }
 
+.m-2 {
+  margin: 0.5rem;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -573,6 +577,10 @@ video {
 
 .mt-3 {
   margin-top: 0.75rem;
+}
+
+.mt-8 {
+  margin-top: 2rem;
 }
 
 .table {
@@ -593,6 +601,10 @@ video {
 
 .min-w-80 {
   min-width: 20rem;
+}
+
+.list-disc {
+  list-style-type: disc;
 }
 
 .space-y-4 > :not([hidden]) ~ :not([hidden]) {
@@ -628,6 +640,10 @@ video {
   padding-right: 1rem;
 }
 
+.text-left {
+  text-align: left;
+}
+
 .text-center {
   text-align: center;
 }
@@ -652,6 +668,11 @@ video {
 
 .text-lg {
   font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.text-xl {
+  font-size: 1.25rem;
   line-height: 1.75rem;
 }
 

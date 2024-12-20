@@ -10,7 +10,7 @@
     "tailwindcss": "^3.4.17"
   },
   "scripts": {
-    "t": "npx tailwindcss -i src/styles.css -o src/output.css --watch",
+    "css": "npx tailwindcss -i src/styles.css -o src/output.css --watch",
     "lint": "eslint . && prettier --check .",
     "format": "prettier --write .",
     "bump": "pnpm update -i"

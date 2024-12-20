@@ -52,6 +52,8 @@ import {
   erSchedule,
   strikeSchedule,
   regSchedule,
+  lopezSchedule,
+  holidayDates,
 } from './schedules.js';
 
 function updateSchedule(schedule) {
@@ -145,8 +147,9 @@ function updatePeriod(schedule) {
 
 //bad code below! too lazy to find better way to do this
 let schedule = regSchedule;
-function showAllRows() {
-  $('#strike').show();
+function defaultRows() {
+  $('#strike').hide();
+  $('#lunch').hide();
   $('#p1').show();
   $('#p2').show();
   $('#p3').show();
@@ -158,8 +161,7 @@ function showAllRows() {
   $('.table').show();
 }
 function semesterExamHelper() {
-  showAllRows();
-  $('#strike').hide();
+  defaultRows();
   $('#sem1').hide();
   $('#sem2').hide();
   $('#sem3').hide();
@@ -169,8 +171,7 @@ function semesterExamHelper() {
 $('#schedule a[href="#Regular"]').click(function (e) {
   e.preventDefault();
   $(this).tab('show');
-  showAllRows();
-  $('#strike').hide();
+  defaultRows();
   updateSchedule(regSchedule);
   updatePeriod(regSchedule);
   schedule = regSchedule;
@@ -180,7 +181,8 @@ $('#schedule a[href="#Regular"]').click(function (e) {
 $('#schedule a[href="#STRIKE"]').click(function (e) {
   e.preventDefault();
   $(this).tab('show');
-  showAllRows();
+  defaultRows();
+  $('#strike').show();
   updateSchedule(strikeSchedule);
   updatePeriod(strikeSchedule);
   schedule = strikeSchedule;
@@ -190,8 +192,7 @@ $('#schedule a[href="#STRIKE"]').click(function (e) {
 $('#schedule a[href="#erSchedule"]').click(function (e) {
   e.preventDefault();
   $(this).tab('show');
-  showAllRows();
-  $('#strike').hide();
+  defaultRows();
   updateSchedule(erSchedule);
   updatePeriod(erSchedule);
   schedule = erSchedule;
@@ -239,7 +240,58 @@ $('#schedule a[href="#sem4Schedule"]').click(function (e) {
   updatePeriod(sem4Schedule);
   schedule = sem4Schedule;
 });
-
+$('#schedule a[href="#lopezSchedule"]').click(function (e) {
+  e.preventDefault();
+  $(this).tab('show');
+  defaultRows();
+  $('#lunch').show();
+  updateSchedule(lopezSchedule);
+  updatePeriod(lopezSchedule);
+  schedule = lopezSchedule;
+  document.getElementById('dropdown').innerText = 'Lopez 8th Grade Schedule';
+});
+function vacation() {
+  let today = new Date();
+  let month = today.getMonth();
+  let date = today.getDate();
+  let onBreak = false;
+  for (let i = 0; i < holidayDates.length; i++) {
+    let breakRange = holidayDates[i];
+    let start = breakRange[0],
+      end = breakRange[1];
+    if (start[0] == 11 && end[0] == 0) {
+      //spans over the new year
+      if ((date >= start[1] || date <= end[1]) && (month == 11 || month == 0)) {
+        onBreak = true;
+      }
+    } else if (start[0] < end[0]) {
+      //2 or more months
+      if (month > start[0] && month < end[0]) {
+        onBreak = true;
+      } else if (month == start[0]) {
+        if (date >= start[0]) {
+          onBreak = true;
+        }
+      } else if (month == end[0]) {
+        if (date <= end[0]) {
+          onBreak = true;
+        }
+      }
+    } else {
+      //inside a month
+      if (date >= start[1] && date <= end[1]) {
+        onBreak = true;
+      }
+    }
+    if (onBreak) {
+      $('#mainDiv').hide();
+      $('#breakDiv').show();
+    } else {
+      $('#mainDiv').show();
+      $('#breakDiv').hide();
+    }
+  }
+}
 $(function () {
   let today = new Date();
   let dow = today.getDay(); // day of week
@@ -285,10 +337,10 @@ $(function () {
     }
   }
   updateTime();
-  $('body').fadeIn(1500);
   setInterval(function () {
     updateTime();
     updatePeriod(schedule);
+    vacation();
   }, 1000);
 });
 /* DROPDOWN STUFF */

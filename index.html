@@ -13,90 +13,139 @@
   </head>
   <body class="min-w-80 bg-sky-100 pl-4 pr-4 font-serif">
     <main class="mx-auto w-full md:w-4/5">
-      <div class="space-y-4 text-center font-sans text-5xl text-sky-600">
-        <h1>Reagan Bell Schedule</h1>
-        <div id="clock"></div>
-      </div>
-      <div
-        class="mb-2 mt-3 space-y-4 text-center font-sans text-3xl text-sky-600"
-      >
-        <div id="per"></div>
-        <div id="min-left"></div>
-        <div id="until-school"></div>
-      </div>
-      <div class="container-fluid">
-        <ul class="nav nav-tabs" id="schedule">
-          <div class="dropdown font-sans">
-            <button
-              id="dropdown"
-              class="dropbtn bg-sky-600 p-3 text-lg text-white"
-            >
-              Dropdown
-            </button>
-            <div
-              id="myDropdown"
-              class="dropdown-content absolute hidden min-w-40 bg-gray-100 text-black"
-            >
-              <a href="#Regular">Regular Schedule</a>
-              <a href="#STRIKE">STRIKE Schedule</a>
-              <a href="#erSchedule">Early Release Schedule</a>
-              <a id="sem1" href="#sem1Schedule">Semester Exam Schedule</a>
-              <a id="sem2" href="#sem2Schedule">Semester Exam Schedule</a>
-              <a id="sem3" href="#sem3Schedule">Semester Exam Schedule</a>
-              <a id="sem4" href="#sem4Schedule">Semester Exam Schedule</a>
+      <div id="mainDiv">
+        <div class="space-y-4 text-center font-sans text-5xl text-sky-600">
+          <h1>Reagan Bell Schedule</h1>
+          <div id="clock"></div>
+        </div>
+        <div
+          class="mb-2 mt-3 space-y-4 text-center font-sans text-3xl text-sky-600"
+        >
+          <div id="per"></div>
+          <div id="min-left"></div>
+          <div id="until-school"></div>
+        </div>
+        <div class="container-fluid">
+          <ul class="nav nav-tabs" id="schedule">
+            <div class="dropdown font-sans">
+              <button
+                id="dropdown"
+                class="dropbtn bg-sky-600 p-3 text-lg text-white"
+              >
+                Dropdown
+              </button>
+              <div
+                id="myDropdown"
+                class="dropdown-content absolute hidden min-w-40 bg-gray-100 text-black"
+              >
+                <a href="#Regular">Regular Schedule</a>
+                <a href="#STRIKE">STRIKE Schedule</a>
+                <a href="#erSchedule">Early Release Schedule</a>
+                <a href="#lopezSchedule">Lopez 8th Grade Schedule</a>
+                <a id="sem1" href="#sem1Schedule">Semester Exam Schedule</a>
+                <a id="sem2" href="#sem2Schedule">Semester Exam Schedule</a>
+                <a id="sem3" href="#sem3Schedule">Semester Exam Schedule</a>
+                <a id="sem4" href="#sem4Schedule">Semester Exam Schedule</a>
+              </div>
             </div>
+          </ul>
+          <table id="table" class="table text-center font-sans md:text-2xl">
+            <tr id="p1">
+              <td>Period 1</td>
+              <td class="time"></td>
+            </tr>
+            <tr id="p2">
+              <td>Period 2</td>
+              <td class="time"></td>
+            </tr>
+            <tr id="strike">
+              <td>STRIKE Time</td>
+              <td class="time"></td>
+            </tr>
+            <tr id="p3">
+              <td>Period 3</td>
+              <td class="time"></td>
+            </tr>
+            <tr id="p4">
+              <td>Period 4</td>
+              <td class="time"></td>
+            </tr>
+            <tr id="p5">
+              <td>Period 5</td>
+              <td class="time"></td>
+            </tr>
+            <tr id="lunch">
+              <td>8th Grade Lunch</td>
+              <td class="time"></td>
+            </tr>
+            <tr id="p6">
+              <td>Period 6</td>
+              <td class="time"></td>
+            </tr>
+            <tr id="p7">
+              <td>Period 7</td>
+              <td class="time"></td>
+            </tr>
+            <tr id="p8">
+              <td>Period 8</td>
+              <td class="time"></td>
+            </tr>
+          </table>
+          <footer class="font-sans">
+            <p>
+              <a
+                class="text-sky-600 underline"
+                href="https://github.com/renaissancedog/reagan-schedule"
+                target="_blank"
+                >Star or fork</a
+              >
+              this repo.
+            </p>
+            <p class="mt-2">Made with ❤️ by William, 2024</p>
+          </footer>
+        </div>
+      </div>
+      <div id="breakDiv" class="hidden">
+        <div class="m-2 space-y-4 text-center font-sans text-5xl text-sky-600">
+          <h1>Why are you here? It's break! Have some fun!</h1>
+          <div class="text-left text-xl">
+            <ul class="list-disc">
+              <li>
+                Try
+                <a
+                  class="underline"
+                  target="_blank"
+                  href="https://khanacademy.org"
+                  >learning something interesting!</a
+                >
+              </li>
+              <li>
+                Or
+                <a
+                  class="underline"
+                  target="_blank"
+                  href="https://www.mysapl.org"
+                  >read a good book!</a
+                >
+              </li>
+              <li>
+                Maybe even
+                <a
+                  class="text-sky-600 underline"
+                  href="https://github.com/renaissancedog/reagan-schedule"
+                  target="_blank"
+                >
+                  contribute to this project!</a
+                >
+              </li>
+              <li>
+                If you're still bored, go outside, take a walk, and touch some
+                grass!
+              </li>
+            </ul>
+            <p class="mt-8">Made with ❤️ by William, 2024</p>
           </div>
-        </ul>
-        <table id="table" class="table text-center font-sans md:text-2xl">
-          <tr id="p1">
-            <td>Period 1</td>
-            <td class="time"></td>
-          </tr>
-          <tr id="p2">
-            <td>Period 2</td>
-            <td class="time"></td>
-          </tr>
-          <tr id="strike">
-            <td>STRIKE Time</td>
-            <td class="time"></td>
-          </tr>
-          <tr id="p3">
-            <td>Period 3</td>
-            <td class="time"></td>
-          </tr>
-          <tr id="p4">
-            <td>Period 4</td>
-            <td class="time"></td>
-          </tr>
-          <tr id="p5">
-            <td>Period 5</td>
-            <td class="time"></td>
-          </tr>
-          <tr id="p6">
-            <td>Period 6</td>
-            <td class="time"></td>
-          </tr>
-          <tr id="p7">
-            <td>Period 7</td>
-            <td class="time"></td>
-          </tr>
-          <tr id="p8">
-            <td>Period 8</td>
-            <td class="time"></td>
-          </tr>
-        </table>
-        <footer class="font-sans">
-          <p>
-            <a
-              class="text-sky-600 underline"
-              href="https://github.com/renaissancedog/reagan-schedule"
-              target="_blank"
-              >Star or fork</a
-            >
-            this repo.
-          </p>
-          <p class="mt-2">Made with ❤️ by William, 2024</p>
-        </footer>
+        </div>
       </div>
     </main>
   </body>
