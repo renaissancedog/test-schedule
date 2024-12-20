@@ -261,7 +261,7 @@ function vacation() {
       end = breakRange[1];
     if (start[0] == 11 && end[0] == 0) {
       //spans over the new year
-      if ((date >= start[1] || date <= end[1]) && (month == 11 || month == 0)) {
+      if ((month == 11 && date >= start[0]) || (month == 0 && date <= end[0])) {
         onBreak = true;
       }
     } else if (start[0] < end[0]) {
@@ -277,9 +277,9 @@ function vacation() {
           onBreak = true;
         }
       }
-    } else {
+    } else if (start[0] == end[0]) {
       //inside a month
-      if (date >= start[1] && date <= end[1]) {
+      if (date >= start[1] && date <= end[1] && month == start[0]) {
         onBreak = true;
       }
     }
