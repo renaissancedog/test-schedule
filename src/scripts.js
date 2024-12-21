@@ -243,7 +243,7 @@ $('#schedule a[href="#sem4Schedule"]').click(function (e) {
   updatePeriod(sem4Schedule);
   schedule = sem4Schedule;
 });
-$('#schedule a[href="#assemblySchedule"]').click(function (e) {
+$('#schedule a[href="#assembly"]').click(function (e) {
   e.preventDefault();
   $(this).tab('show');
   defaultRows();
@@ -345,7 +345,7 @@ $(function () {
   for (let i = 0; i < assemblyDates.length; i++) {
     if (assemblyDates[i][0] == month && assemblyDates[i][1] == date) {
       clicked = true;
-      $('#schedule a[href="#assemblySchedule"]').click();
+      $('#schedule a[href="#assembly"]').click();
     }
   }
   if (!clicked) {
