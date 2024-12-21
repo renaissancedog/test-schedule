@@ -52,6 +52,8 @@ import {
   regSchedule,
   lopezSchedule,
   holidayDates,
+  assemblyDates,
+  assemblySchedule,
 } from './schedules.js';
 
 function updateSchedule(schedule) {
@@ -158,14 +160,15 @@ function defaultRows() {
   $('#p6').show();
   $('#p7').show();
   $('#p8').show();
-  $('.table').show();
-}
-function semesterExamHelper() {
-  defaultRows();
+  $('#assembly').hide();
   $('#sem1').hide();
   $('#sem2').hide();
   $('#sem3').hide();
   $('#sem4').hide();
+  $('.table').show();
+}
+function semesterExamHelper() {
+  defaultRows();
   document.getElementById('dropdown').innerText = 'Semester Exam Schedule';
 }
 $('#schedule a[href="#Regular"]').click(function (e) {
@@ -239,6 +242,16 @@ $('#schedule a[href="#sem4Schedule"]').click(function (e) {
   updateSchedule(sem4Schedule);
   updatePeriod(sem4Schedule);
   schedule = sem4Schedule;
+});
+$('#schedule a[href="#assemblySchedule"]').click(function (e) {
+  e.preventDefault();
+  $(this).tab('show');
+  defaultRows();
+  $('#assembly').show();
+  updateSchedule(assemblySchedule);
+  updatePeriod(assemblySchedule);
+  schedule = assemblySchedule;
+  document.getElementById('dropdown').innerText = 'Assembly Schedule';
 });
 $('#schedule a[href="#lopezSchedule"]').click(function (e) {
   e.preventDefault();
@@ -327,6 +340,12 @@ $(function () {
     if (sem4Dates[i][0] == month && sem4Dates[i][1] == date) {
       clicked = true;
       $('#schedule a[href="#sem4Schedule"]').click();
+    }
+  }
+  for (let i = 0; i < assemblyDates.length; i++) {
+    if (assemblyDates[i][0] == month && assemblyDates[i][1] == date) {
+      clicked = true;
+      $('#schedule a[href="#assemblySchedule"]').click();
     }
   }
   if (!clicked) {

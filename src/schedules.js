@@ -48,6 +48,7 @@ export const sem1Dates = [[11, 17]]; //finals day 1
 export const sem2Dates = [[11, 18]]; //finals day 2
 export const sem3Dates = [[11, 19]]; //finals day 3
 export const sem4Dates = [[11, 20]]; //finals day 4
+export const assemblyDates = [[0, 7]];
 export const regSchedule = [
   { name: 'Period 1', id: 'p1', start: new Time(8, 50), end: new Time(9, 45) },
   { name: 'Period 2', id: 'p2', start: new Time(9, 50), end: new Time(10, 45) },
@@ -271,6 +272,46 @@ export const sem4Schedule = [
     id: 'p8',
     start: new Time(12, 10),
     end: new Time(13, 20),
+  },
+];
+export const assemblySchedule = [
+  { name: 'Period 1', id: 'p1', start: new Time(8, 50), end: new Time(9, 55) },
+  { name: 'Period 2', id: 'p2', start: new Time(10, 0), end: new Time(11, 0) },
+  {
+    name: 'Period 3',
+    id: 'p3',
+    start: new Time(11, 5),
+    end: new Time(12, 5),
+  },
+  {
+    name: 'Period 4',
+    id: 'p4',
+    start: new Time(12, 10),
+    end: new Time(12, 50),
+  },
+  {
+    name: 'Period 5',
+    id: 'p5',
+    start: new Time(12, 55),
+    end: new Time(13, 35),
+  },
+  {
+    name: 'Period 6',
+    id: 'p6',
+    start: new Time(13, 40),
+    end: new Time(14, 20),
+  },
+  {
+    name: 'Period 7',
+    id: 'p7',
+    start: new Time(14, 25),
+    end: new Time(15, 25),
+  },
+  {
+    name: 'Period 8',
+    id: 'p8',
+    start: new Time(15, 30),
+    end: new Time(16, 15),
   },
 ];
 export const lopezSchedule = [
