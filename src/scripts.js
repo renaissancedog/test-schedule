@@ -64,12 +64,8 @@ function updateSchedule(schedule) {
 function updateTime(schedule) {
   let today = new Date();
   $('#clock').html(today.toString());
-  if (today.getSeconds() == 0) {
-    updatePeriod(schedule);
-  }
-  if (today.getMinutes() == 0) {
-    vacation();
-  }
+  updatePeriod(schedule);
+  vacation();
 }
 
 function updatePeriod(schedule) {
@@ -340,8 +336,6 @@ $(function () {
       $('#schedule a[href="#Regular"]').click();
     }
   }
-  updatePeriod(schedule);
-  vacation();
   updateTime(schedule);
   setInterval(function () {
     updateTime(schedule);
