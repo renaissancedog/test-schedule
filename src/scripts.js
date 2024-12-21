@@ -1,5 +1,3 @@
-//the code that makes this app work!
-//it's pretty bad but if it works, it works
 //have a great day!
 
 //Time and Date classes - not my code
@@ -267,7 +265,7 @@ function vacation() {
       end = breakRange[1];
     if (start[0] == 11 && end[0] == 0) {
       //spans over the new year
-      if ((month == 11 && date >= start[0]) || (month == 0 && date <= end[0])) {
+      if ((month == 11 && date >= start[1]) || (month == 0 && date <= end[1])) {
         onBreak = true;
       }
     } else if (start[0] < end[0]) {
@@ -275,11 +273,11 @@ function vacation() {
       if (month > start[0] && month < end[0]) {
         onBreak = true;
       } else if (month == start[0]) {
-        if (date >= start[0]) {
+        if (date >= start[1]) {
           onBreak = true;
         }
       } else if (month == end[0]) {
-        if (date <= end[0]) {
+        if (date <= end[1]) {
           onBreak = true;
         }
       }
@@ -289,13 +287,13 @@ function vacation() {
         onBreak = true;
       }
     }
-    if (onBreak) {
-      $('#mainDiv').hide();
-      $('#breakDiv').show();
-    } else {
-      $('#mainDiv').show();
-      $('#breakDiv').hide();
-    }
+  }
+  if (onBreak) {
+    $('#mainDiv').hide();
+    $('#breakDiv').show();
+  } else {
+    $('#mainDiv').show();
+    $('#breakDiv').hide();
   }
 }
 $(function () {
@@ -342,7 +340,9 @@ $(function () {
       $('#schedule a[href="#Regular"]').click();
     }
   }
-  updateTime();
+  updatePeriod(schedule);
+  vacation();
+  updateTime(schedule);
   setInterval(function () {
     updateTime(schedule);
   }, 1000);
