@@ -57,6 +57,7 @@ import {
 } from './schedules.js';
 let suppressVacation = false;
 $('#suppress').click(function (e) {
+  e.preventDefault();
   suppressVacation = true;
   toggleSchedule(false);
 });
