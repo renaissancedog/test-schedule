@@ -94,7 +94,7 @@ export const strikeSchedule = [
   { name: 'Period 2', id: 'p2', start: new Time(9, 45), end: new Time(10, 30) },
   {
     name: 'STRIKE',
-    id: 'strike',
+    id: 'STRIKE',
     start: new Time(10, 35),
     end: new Time(11, 15),
   },

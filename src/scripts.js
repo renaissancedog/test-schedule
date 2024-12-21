@@ -55,21 +55,34 @@ import {
   assemblyDates,
   assemblySchedule,
 } from './schedules.js';
-
+let suppressVacation = false;
+$('#suppress').click(function (e) {
+  suppressVacation = true;
+  toggleSchedule(false);
+});
 function updateSchedule(schedule) {
   for (let item of schedule) {
     let str = item.start.toString() + ' - ' + item.end.toString();
     $('#' + item.id + '>.time').html(str);
   }
 }
-
+function toggleSchedule(onBreak) {
+  if (onBreak) {
+    $('#mainDiv').hide();
+    $('#breakDiv').show();
+  } else {
+    $('#mainDiv').show();
+    $('#breakDiv').hide();
+  }
+}
 function updateTime(schedule) {
   let today = new Date();
   $('#clock').html(today.toString());
   updatePeriod(schedule);
-  vacation();
+  if (!suppressVacation) {
+    vacation();
+  }
 }
-
 function updatePeriod(schedule) {
   let today = new Date();
   let dow = today.getDay(); // day of week
@@ -103,10 +116,12 @@ function updatePeriod(schedule) {
             (dow === 0 && currTime.valueOf() < schedule[0].start.valueOf())
           ? 24
           : 0;
-    if (minutes == 1) {
-      $('#until-school').html(
-        `${hours} hours and ${minutes} minute until school`,
-      );
+    if (minutes == 1 && hours == 1) {
+      $('#until-school').html(`1 hour and 1 minute until school`);
+    } else if (minutes == 1 && hours != 1) {
+      $('#until-school').html(`${hours} hours and 1 minute until school`);
+    } else if (minutes != 1 && hours == 1) {
+      $('#until-school').html(`1 hour and ${minutes} minutes until school`);
     } else {
       $('#until-school').html(
         `${hours} hours and ${minutes} minutes until school`,
@@ -146,123 +161,6 @@ function updatePeriod(schedule) {
     }
   }
 }
-
-//bad code below! too lazy to find better way to do this
-let schedule = regSchedule;
-function defaultRows() {
-  $('#strike').hide();
-  $('#lunch').hide();
-  $('#p1').show();
-  $('#p2').show();
-  $('#p3').show();
-  $('#p4').show();
-  $('#p5').show();
-  $('#p6').show();
-  $('#p7').show();
-  $('#p8').show();
-  $('#assembly').hide();
-  $('#sem1').hide();
-  $('#sem2').hide();
-  $('#sem3').hide();
-  $('#sem4').hide();
-  $('.table').show();
-}
-function semesterExamHelper() {
-  defaultRows();
-  document.getElementById('dropdown').innerText = 'Semester Exam Schedule';
-}
-$('#schedule a[href="#Regular"]').click(function (e) {
-  e.preventDefault();
-  $(this).tab('show');
-  defaultRows();
-  updateSchedule(regSchedule);
-  updatePeriod(regSchedule);
-  schedule = regSchedule;
-  document.getElementById('dropdown').innerText = 'Regular Schedule';
-});
-
-$('#schedule a[href="#STRIKE"]').click(function (e) {
-  e.preventDefault();
-  $(this).tab('show');
-  defaultRows();
-  $('#strike').show();
-  updateSchedule(strikeSchedule);
-  updatePeriod(strikeSchedule);
-  schedule = strikeSchedule;
-  document.getElementById('dropdown').innerText = 'STRIKE Schedule';
-});
-
-$('#schedule a[href="#erSchedule"]').click(function (e) {
-  e.preventDefault();
-  $(this).tab('show');
-  defaultRows();
-  updateSchedule(erSchedule);
-  updatePeriod(erSchedule);
-  schedule = erSchedule;
-  document.getElementById('dropdown').innerText = 'Early Release Schedule';
-});
-$('#schedule a[href="#sem1Schedule"]').click(function (e) {
-  e.preventDefault();
-  semesterExamHelper();
-  $('#sem1').show();
-  $(this).tab('show');
-  updateSchedule(sem1Schedule);
-  updatePeriod(sem1Schedule);
-  schedule = sem1Schedule;
-});
-$('#schedule a[href="#sem2Schedule"]').click(function (e) {
-  e.preventDefault();
-  semesterExamHelper();
-  $('#sem2').show();
-  $(this).tab('show');
-  updateSchedule(sem2Schedule);
-  updatePeriod(sem2Schedule);
-  schedule = sem2Schedule;
-});
-$('#schedule a[href="#sem3Schedule"]').click(function (e) {
-  e.preventDefault();
-  $(this).tab('show');
-  semesterExamHelper();
-  $('#sem3').show();
-  $('#p2').hide();
-  $('#p3').hide();
-  $('#p8').hide();
-  updateSchedule(sem3Schedule);
-  updatePeriod(sem3Schedule);
-  schedule = sem3Schedule;
-});
-$('#schedule a[href="#sem4Schedule"]').click(function (e) {
-  e.preventDefault();
-  $(this).tab('show');
-  semesterExamHelper();
-  $('#sem4').show();
-  $('#p1').hide();
-  $('#p2').hide();
-  $('#p7').hide();
-  updateSchedule(sem4Schedule);
-  updatePeriod(sem4Schedule);
-  schedule = sem4Schedule;
-});
-$('#schedule a[href="#assembly"]').click(function (e) {
-  e.preventDefault();
-  $(this).tab('show');
-  defaultRows();
-  $('#assembly').show();
-  updateSchedule(assemblySchedule);
-  updatePeriod(assemblySchedule);
-  schedule = assemblySchedule;
-  document.getElementById('dropdown').innerText = 'Assembly Schedule';
-});
-$('#schedule a[href="#lopezSchedule"]').click(function (e) {
-  e.preventDefault();
-  $(this).tab('show');
-  defaultRows();
-  $('#lunch').show();
-  updateSchedule(lopezSchedule);
-  updatePeriod(lopezSchedule);
-  schedule = lopezSchedule;
-  document.getElementById('dropdown').innerText = 'Lopez 8th Grade Schedule';
-});
 function vacation() {
   let today = new Date();
   let month = today.getMonth();
@@ -297,62 +195,168 @@ function vacation() {
       }
     }
   }
-  if (onBreak) {
-    $('#mainDiv').hide();
-    $('#breakDiv').show();
-  } else {
-    $('#mainDiv').show();
-    $('#breakDiv').hide();
-  }
+  toggleSchedule(onBreak);
 }
+
+let schedule = regSchedule;
+function defaultDrop() {
+  $('#regular').show();
+  $('#strike').show();
+  $('#er').show();
+  $('#lopez').show();
+  $('#assembly').hide();
+  $('#sem1').hide();
+  $('#sem2').hide();
+  $('#sem3').hide();
+  $('#sem4').hide();
+  $('.table').show();
+}
+function defaultRows() {
+  $('#lunch').hide();
+  $('#STRIKE').hide();
+  $('#p1').show();
+  $('#p2').show();
+  $('#p3').show();
+  $('#p4').show();
+  $('#p5').show();
+  $('#p6').show();
+  $('#p7').show();
+  $('#p8').show();
+}
+function update(sched) {
+  updateSchedule(sched);
+  updatePeriod(sched);
+  schedule = sched;
+}
+$('#regular').click(function (e) {
+  e.preventDefault();
+  $(this).tab('show');
+  defaultRows();
+  update(regSchedule);
+  document.getElementById('dropdown').innerText = 'Regular Schedule';
+});
+
+$('#strike').click(function (e) {
+  e.preventDefault();
+  $(this).tab('show');
+  defaultRows();
+  $('#STRIKE').show();
+  update(strikeSchedule);
+  document.getElementById('dropdown').innerText = 'STRIKE Schedule';
+});
+
+$('#er').click(function (e) {
+  e.preventDefault();
+  $(this).tab('show');
+  defaultRows();
+  update(erSchedule);
+  document.getElementById('dropdown').innerText = 'Early Release Schedule';
+});
+$('#sem1').click(function (e) {
+  e.preventDefault();
+  $(this).tab('show');
+  defaultRows();
+  update(sem1Schedule);
+  document.getElementById('dropdown').innerText = 'Semester Exam Schedule';
+});
+$('#sem2').click(function (e) {
+  e.preventDefault();
+  $(this).tab('show');
+  defaultRows();
+  update(sem2Schedule);
+  document.getElementById('dropdown').innerText = 'Semester Exam Schedule';
+});
+$('#sem3').click(function (e) {
+  e.preventDefault();
+  $(this).tab('show');
+  defaultRows();
+  update(sem3Schedule);
+  document.getElementById('dropdown').innerText = 'Semester Exam Schedule';
+  $('#p2').hide();
+  $('#p3').hide();
+  $('#p8').hide();
+});
+$('#sem4').click(function (e) {
+  e.preventDefault();
+  $(this).tab('show');
+  defaultRows();
+  update(sem4Schedule);
+  document.getElementById('dropdown').innerText = 'Semester Exam Schedule';
+  $('#p1').hide();
+  $('#p2').hide();
+  $('#p7').hide();
+});
+$('#assembly').click(function (e) {
+  e.preventDefault();
+  $(this).tab('show');
+  defaultRows();
+  update(assemblySchedule);
+  document.getElementById('dropdown').innerText = 'Assembly Schedule';
+});
+$('#lopez').click(function (e) {
+  e.preventDefault();
+  $(this).tab('show');
+  defaultRows();
+  $('#lunch').show();
+  update(lopezSchedule);
+  document.getElementById('dropdown').innerText = 'Lopez 8th Grade Schedule';
+});
+
 $(function () {
   let today = new Date();
   let dow = today.getDay(); // day of week
   let month = today.getMonth();
   let date = today.getDate();
   let clicked = false;
+  defaultDrop();
   //bad code below! too lazy to find better way to do this
   for (let i = 0; i < erDates.length; i++) {
     if (erDates[i][0] == month && erDates[i][1] == date) {
       clicked = true;
-      $('#schedule a[href="#erSchedule"]').click();
+      $('#er').show();
+      $('#er').click();
     }
   }
   for (let i = 0; i < sem1Dates.length; i++) {
     if (sem1Dates[i][0] == month && sem1Dates[i][1] == date) {
       clicked = true;
-      $('#schedule a[href="#sem1Schedule"]').click();
+      $('#sem1').show();
+      $('#sem1').click();
     }
   }
   for (let i = 0; i < sem2Dates.length; i++) {
     if (sem2Dates[i][0] == month && sem2Dates[i][1] == date) {
       clicked = true;
-      $('#schedule a[href="#sem2Schedule"]').click();
+      $('#sem2').show();
+      $('#sem2').click();
     }
   }
   for (let i = 0; i < sem3Dates.length; i++) {
     if (sem3Dates[i][0] == month && sem3Dates[i][1] == date) {
       clicked = true;
-      $('#schedule a[href="#sem3Schedule"]').click();
+      $('#sem3').show();
+      $('#sem3').click();
     }
   }
   for (let i = 0; i < sem4Dates.length; i++) {
     if (sem4Dates[i][0] == month && sem4Dates[i][1] == date) {
       clicked = true;
-      $('#schedule a[href="#sem4Schedule"]').click();
+      $('#sem4').show();
+      $('#sem4').click();
     }
   }
   for (let i = 0; i < assemblyDates.length; i++) {
     if (assemblyDates[i][0] == month && assemblyDates[i][1] == date) {
       clicked = true;
-      $('#schedule a[href="#assembly"]').click();
+      $('#assembly').show();
+      $('#assembly').click();
     }
   }
   if (!clicked) {
     if (dow == 4) {
-      $('#schedule a[href="#STRIKE"]').click();
+      $('#strike').click();
     } else {
-      $('#schedule a[href="#Regular"]').click();
+      $('#regular').click();
     }
   }
   updateTime(schedule);
