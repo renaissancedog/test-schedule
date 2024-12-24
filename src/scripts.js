@@ -56,10 +56,11 @@ import {
   assemblySchedule,
 } from './schedules.js';
 let suppressVacation = false;
-$('#suppress').click(function (e) {
+let onBreak = false;
+$('.toggle').click(function (e) {
   e.preventDefault();
-  suppressVacation = true;
-  toggleSchedule(false);
+  suppressVacation = !suppressVacation;
+  toggleSchedule(!suppressVacation);
 });
 function updateSchedule(schedule) {
   for (let item of schedule) {
@@ -67,13 +68,18 @@ function updateSchedule(schedule) {
     $('#' + item.id + '>.time').html(str);
   }
 }
-function toggleSchedule(onBreak) {
-  if (onBreak) {
+function toggleSchedule(bool) {
+  if (bool) {
     $('#mainDiv').hide();
     $('#breakDiv').show();
   } else {
     $('#mainDiv').show();
     $('#breakDiv').hide();
+  }
+  if (onBreak) {
+    $('#backButton').show();
+  } else {
+    $('#backButton').hide();
   }
 }
 function updateTime(schedule) {
@@ -166,7 +172,6 @@ function vacation() {
   let today = new Date();
   let month = today.getMonth();
   let date = today.getDate();
-  let onBreak = false;
   for (let i = 0; i < holidayDates.length; i++) {
     let breakRange = holidayDates[i];
     let start = breakRange[0],
@@ -210,7 +215,6 @@ function defaultDrop() {
   $('#sem2').hide();
   $('#sem3').hide();
   $('#sem4').hide();
-  $('.table').show();
 }
 function defaultRows() {
   $('#lunch').hide();
@@ -314,7 +318,6 @@ $(function () {
   for (let i = 0; i < erDates.length; i++) {
     if (erDates[i][0] == month && erDates[i][1] == date) {
       clicked = true;
-      $('#er').show();
       $('#er').click();
     }
   }
