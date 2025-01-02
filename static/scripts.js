@@ -23,7 +23,7 @@ Time.prototype = {
     let x = this.valueOf(),
       y = t.valueOf();
     return x - y + (x > y ? 0 : 24 * 60);
-  },
+  }
 };
 
 Date.prototype.toString = function () {
@@ -53,7 +53,7 @@ import {
   lopezSchedule,
   holidayDates,
   assemblyDates,
-  assemblySchedule,
+  assemblySchedule
 } from './schedules.js';
 let suppressVacation = false;
 let onBreak = false;
@@ -131,7 +131,7 @@ function updatePeriod(schedule) {
       $('#until-school').html(`1 hour and ${minutes} minutes until school`);
     } else {
       $('#until-school').html(
-        `${hours} hours and ${minutes} minutes until school`,
+        `${hours} hours and ${minutes} minutes until school`
       );
     }
   } else {
