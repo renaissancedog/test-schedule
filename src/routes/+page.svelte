@@ -1,5 +1,10 @@
+<script>
+  import Sidebar from '../lib/components/Sidebar.svelte';
+</script>
+
 <main class="mx-auto w-full md:w-5/6">
   <div id="mainDiv">
+    <Sidebar />
     <div class="space-y-4 text-center font-sans text-5xl text-sky-600">
       <h1>Reagan Bell Schedule</h1>
       <div id="clock"></div>
@@ -97,7 +102,9 @@
     </div>
   </div>
   <div id="breakDiv" class="hidden">
-    <div class="w-5/6 mx-auto m-2 space-y-4 text-center font-sans text-5xl text-sky-600">
+    <div
+      class="m-2 mx-auto w-5/6 space-y-4 text-center font-sans text-5xl text-sky-600"
+    >
       <h1>Why are you here? It's break! Have some fun!</h1>
       <div class="text-left text-xl">
         <ul class="list-disc">

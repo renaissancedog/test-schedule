@@ -306,8 +306,7 @@ $('#lopez').click(function (e) {
   update(lopezSchedule);
   document.getElementById('dropdown').innerText = 'Lopez 8th Grade Schedule';
 });
-
-$(function () {
+function populate() {
   let today = new Date();
   let dow = today.getDay(); // day of week
   let month = today.getMonth();
@@ -363,7 +362,10 @@ $(function () {
       $('#regular').click();
     }
   }
+}
+$(function () {
   updateTime(schedule);
+  populate();
   setInterval(function () {
     updateTime(schedule);
   }, 1000);
