@@ -18,7 +18,8 @@ export default [
     },
     rules: {
       'svelte/no-at-html-tags': 'warn',
-      'no-undef': 'warn'
+      'no-undef': 'warn',
+      'no-unused-vars': 'warn'
     }
   },
   {

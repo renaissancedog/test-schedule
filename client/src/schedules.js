@@ -25,23 +25,6 @@ Time.prototype = {
 
 //dates - all for the 2024-25 school year
 
-export const holidayDates = [
-  //spring break, summer break, fall break, winter break
-  //format: 1st day of holiday, last day of holiday
-  //note that no schooldays are included in the range
-  [
-    [11, 21],
-    [0, 5]
-  ],
-  [
-    [2, 8],
-    [2, 16]
-  ],
-  [
-    [4, 23],
-    [7, 10]
-  ]
-];
 export const erDates = [
   [9, 11],
   [10, 4],

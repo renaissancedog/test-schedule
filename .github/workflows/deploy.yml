@@ -22,11 +22,14 @@ jobs:
         with:
           node-version: 20
           cache: pnpm
+          cache-dependency-path: './client/pnpm-lock.yaml'
 
       - name: Install dependencies
         run: pnpm install
+        working-directory: ./client
 
       - name: build
+        working-directory: ./client
         env:
           BASE_PATH: '/${{ github.event.repository.name }}'
         run: |
@@ -36,7 +39,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           # this should match the `pages` option in your adapter-static options
-          path: 'build/'
+          path: 'client/build/'
 
   deploy:
     needs: build_site
